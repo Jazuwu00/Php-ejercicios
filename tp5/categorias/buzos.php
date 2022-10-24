@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- CSS del bootstrap  -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS del bootstrap  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="./estilos/estilos.css">
-  <link rel="shortcut icon" href="./imagenes/icono.png" type="image/x-icon">
+  <link rel="stylesheet" href="../estilos/estilos.css">
+  <link rel="shortcut icon" href="../imagenes/icono.png" type="image/x-icon">
   <title>Tienda</title>
- 
 </head>
 <body>
-
-  <div class=" bg-dark text-light text-center pb-3" >
+<div class=" bg-dark text-light text-center pb-3" >
   <h1 class="text-center p-2">Tienda de ropa</h1>
-  <button class="btn btn-primary " type="submit"><a  class="text-light text-decoration-none" href="index.php">Inicio</a></button>
-  <button class="btn btn-primary" type="submit"><a  class="text-light text-decoration-none"href="listar.php">ver ropa</a></button>
-  <button class="btn btn-primary" type="submit"><a class="text-light text-decoration-none" href="./abm/agregar.html">Agregar ropa</a></button>
+  <button class="btn btn-primary " type="submit"><a  class="text-light text-decoration-none" href="../index.php">Inicio</a></button>
+  <button class="btn btn-primary" type="submit"><a  class="text-light text-decoration-none"href="../listar.php">ver ropa</a></button>
+  <button class="btn btn-primary" type="submit"><a class="text-light text-decoration-none" href="../abm/agregar.html">Agregar ropa</a></button>
   </div>
-<div class="text-center">  <h2 class="mt-3">Lista de ropa</h2>
-  <p>La siguiente lista muestra los datos de la ropa actualmente en stock.</p>
-</div>
 
-  <section>
+
+<div class="mt-3 text-center">
+    <h2>Lista de ropa</h2>
+    <p>La siguiente lista muestra los datos de los buzos.</p>
+    </div>
+
+    <section>
     <div class="container-fluid">
       <div class="row align-items-center px-3 " >
 
@@ -39,8 +40,7 @@
         // => Selecciona todos los campos de la siguiente tabla
         // SELECT campos_tabla FROM nombre_tabla
         // => Selecciona los siguientes campos de la siguiente tabla
-        $consulta='SELECT * FROM ropa';
-
+        $consulta= "SELECT * FROM ropa where ropa = 'buzo' ";
         // 3) Ejecutar la orden y obtenemos los registros
         $datos= mysqli_query($conexion, $consulta);
 
@@ -67,13 +67,11 @@
       </div>
     </div>
   </section>
-  <div class="text-center mt-5">
- 
-  <div class="text-center mt-5">
+    <div class="text-center mt-5">
  <span class=" text-decoration-underline"> <p>Otras categorias que pueden interesarte</p></span>
-<button class=" btn btn-primary btn-sm" type="submit"><a  class="text-light text-decoration-none" href="./categorias/nike.php">Nike</a></button>
-  <button class="btn btn-primary btn-sm" type="submit"><a  class="text-light text-decoration-none"href="./categorias/buzos.php">Buzos</a></button>
-  <button class="btn btn-primary btn-sm" type="submit"><a class="text-light text-decoration-none" href="./categorias/menora500.php">Menor a $500</a></button> </div>
+<button class="  btn btn-primary btn-sm" type="submit"><a  class="text-light text-decoration-none" href="nike.php">Nike</a></button>
+  <button class="btn btn-primary btn-sm" type="submit"><a  class="text-light text-decoration-none"href="buzos.php">Buzos</a></button>
+  <button class="btn btn-primary btn-sm" type="submit"><a class="text-light text-decoration-none" href="menora500.php">Menor a $500</a></button> </div>
   
   <footer class="footer bg-dark text-center text-lg-start mt-4">
   <!-- Copyright -->
@@ -81,8 +79,7 @@
     © 2020 Copyright:
   </div>
 </footer>
-  
-  <!-- JavaScript del bootstrap -->
+     <!-- JavaScript del bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
