@@ -19,7 +19,7 @@
 <div class=" bg-dark text-light text-center  pt-3 pb-3" >
     <h1>Tienda de ropa</h1>
     <button class="btn btn-primary " type="submit"><a  class="text-light text-decoration-none" href="index.php">Inicio</a></button>
-  <button class="btn btn-primary" type="submit"><a  class="text-light text-decoration-none"href="listar.php">ver ropa</a></button>
+  <button class="btn btn-primary" type="submit"><a  class="text-light text-decoration-none"href="listar.php">Listar ropa</a></button>
   <button class="btn btn-primary" type="submit"><a class="text-light text-decoration-none" href="./abm/agregar.html">Agregar ropa</a></button>
 </div>
 <div class="mt-3 text-center">
