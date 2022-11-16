@@ -43,21 +43,48 @@ $datos=mysqli_fetch_array($respuesta);
         $marca=$datos["marca"];
         $talle=$datos["talle"];
         $precio=$datos["precio"];
-        $imagen=$datos['imagen'];?>
-<div class=" bg-dark text-light text-center  pt-3 pb-3" >
-    <h1>Tienda de ropa</h1>
-    <button class="btn btn-primary " type="submit"><a  class="text-light text-decoration-none" href="../index.php">Inicio</a></button>
-  <button class="btn btn-primary" type="submit"><a  class="text-light text-decoration-none"href="../listar.php">Listar ropa</a></button>
-  <button class="btn btn-primary" type="submit"><a class="text-light text-decoration-none" href="../abm/agregar.html">Agregar ropa</a></button>
-</div>
+        $imagen=$datos['imagen'];
+        $imagen2=$datos['imagen2'];
+        $promocion=$datos['promocion'];?>
+ <!-- Navigation-->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="../index.php">UwU Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="../index.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../categorias/promocion.php">En promocion</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprar</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="../index.php">Todos los productos</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="../categorias/buzos.php">Buzos</a></li>
+            <li><a class="dropdown-item" href="../categorias/remeras.php">Remeras</a></li>
+            <li><a class="dropdown-item" href="../categorias/zapatos.php">Zapatos</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Vendedores
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="../listar.php">Editar Productos</a>
+          <a class="dropdown-item" href="agregar.html">Agregar producto</a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
 <br>
-<div class="mt-3 text-center">
-    <h2>Ingrese los datos  para modificar la prenda </h2>
-    <br>
-   
-</div>
-
-
         <h2>Modificar</h2>
         <p>Ingrese los nuevos datos de la prenda.</p>
 
@@ -90,17 +117,34 @@ $datos=mysqli_fetch_array($respuesta);
       <input type="text" name="precio"  class="form-control" placeholder="$100" value="<?php echo "$precio"; ?>">
     </div></div>
 
+    <div class="col"><div class="mb-3 ">
+    <p>
+
+En promocion?<br>
+
+<input type="radio" name="promocion" value="1"> Si
+
+<input type="radio" name="promocion" value="0"> No<br>
+
+
+</p>
+    </div></div>
+    
+
     <div class="col ">
-    <label for="">Elije una imagen</label> <br>
+    <label for="">Elige imagen</label> 
     <br>
     <input type="file" name="imagen" placeholder="imagen" required>
+    <br>
+    <input type="file" name="imagen2" placeholder="imagen2" required>
     </div>
 
-    <div class="col "><button type="submit"  name="guardar_cambios" value="Guardar Cambios" class="btn btn-primary mt-4">Guardar Cambios</button>
-    
-            <button class="btn btn-danger mt-4" type="submit" name="Cancelar" formaction="../index.php">Cancelar</button></div>
+    <div class="col ">
+    <button type="submit"  name="guardar_cambios" value="Guardar Cambios" class="btn btn-primary mt-4">Guardar Cambios</button>
+    <button class="btn btn-danger mt-4" type="submit" name="Cancelar" formaction="../index.php">Cancelar</button>
+   </div>
     </form>
-    <br>
+    
     
     <?php
         //dentro del value ponemos el dato que que trajimos del egistro para que ya aparezca el el imput y no volver aq escribirlo
@@ -111,23 +155,25 @@ $datos=mysqli_fetch_array($respuesta);
             // a) generar variables para cada dato a almacenar en la bbdd
             // Si se desea almacenar una imagen en la base de datos usar lo siguiente:
             // addslashes(file_get_contents($_FILES['ID NOMBRE DE LA IMAGEN EN EL FORMULARIO']['tmp_name']))
-            $ropa=$_POST['ropa'];
+                    $ropa=$_POST['ropa'];
                     $marca=$_POST['marca'];
                     $talle=$_POST['talle'];
                     $precio=$_POST['precio'];
                     $imagen=addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+                    $imagen2=addslashes(file_get_contents($_FILES['imagen2']['tmp_name']));
+                    $promocion=$_POST['promocion'];
 
             // 3') Preparar la orden SQL
             // "UPDATE tabla SET campo1='valor1', campo2='valor2', campo3='valor3', campo3='valor3', campo3='valor3' WHERE campo_clave=valor_clave"
             // a) generar la consulta a realizar
-             $consulta = "UPDATE ropa SET ropa='$ropa', marca='$marca', talle='$talle', precio='$precio', imagen='$imagen' WHERE id =$id";
+             $consulta = "UPDATE ropa SET ropa='$ropa', marca='$marca', talle='$talle', precio='$precio', imagen='$imagen', imagen2='$imagen2', promocion= '$promocion' WHERE id =$id";
 
              // 4') Ejecutar la orden y actualizamos los datos
              // a) ejecutar la consulta
              mysqli_query($conexion,$consulta);
 
             // a) rederigir a index
-            header("Location: ..\index.php");
+            header("Location: ../index.php");
 
         }?>
    

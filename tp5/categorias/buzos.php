@@ -18,12 +18,12 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+          <li class="nav-item"><a class="nav-link " aria-current="page" href="../index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="promocion.php">En promocion</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprar</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="index.php">Todos los productos</a></li>
+              <li><a class="dropdown-item" href="../index.php">Todos los productos</a></li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -76,21 +76,21 @@
         $datos= mysqli_query($conexion, $consulta);
 
         // 4) el while recorre todos los registros y genera una CARD PARA CADA UNA
-        while ($reg = mysqli_fetch_array($datos)) {?>
-          <div class="col"  >
-          <div class="card mx-auto mt-3 text-center" style="width: 220px;  font-size:20px;">
-            <img style="width: 200px;  height:150px;" class="card-img-top mt-2" src="data:image/jpg;base64, <?php echo base64_encode($reg['imagen'])?>" alt="" width="100px" height="200px")>
-            <a href="ver.php?id=<?php echo $reg['ropa'];?>" class="card-body">
-              <h3 class="card-title" style="width: 100%; font-size:25px;"><?php echo ucwords($reg['ropa'].' '. $reg['marca']) ?></h3>
-              <p class="card-subtitle "><?php echo ucwords( 'Talle' .' : '.$reg['talle']) ?></p>
-              <span class="card-text "><?php echo(' $'. $reg['precio']); ?></span>
-             <br>
-            </a>
-            <div class="btn-group" style="width:200px; height:50px; margin: 0 auto; gap:5px;">
-                <button style="font-size:20px;" class=" btn btn-primary btn-sm" type="submit"><a class="text-light text-decoration-none" href="../producto.php?id=<?php echo $reg['ID']; ?>">Ver</a></button>
+        while ($reg = mysqli_fetch_array($datos)) { ?>
+          <div class="col" >
+            <div class="card mx-auto mt-3  text-center bg-dark" style="width: 220px; height:350px;  font-size:20px;">
+              <img style="width: 200px;  height:150px;" class="card-img-top mt-2 mx-auto" src="data:image/jpg;base64, <?php echo base64_encode($reg['imagen']) ?>" alt="" width="100px" height="200px" )>
+              <a href="ver.php?id=<?php echo $reg['ropa']; ?>" class="card-body text-decoration-none mt-2">
+                <h3 class="card-title text-light" style="width: 100%; font-size:25px;"><?php echo ucwords($reg['ropa'] . ' ' . $reg['marca']) ?></h3>
+
+                <span class="card-text mt-3 text-light "><?php echo (' $' . $reg['precio']); ?></span>
+
+              </a>
+              <div class="btn-group" style="width:200px; height:50px; margin: 0 auto; gap:5px;">
+                <button style="font-size:20px;" class=" btn btn-primary btn-sm" type="submit"><a class="text-light text-decoration-none" href="producto.php?id=<?php echo $reg['ID']; ?>">Ver</a></button>
                 <button style="font-size:20px;" class=" btn btn-primary btn-sm" type="submit">Comprar</button>
               </div>
-          </div>
+            </div>
           </div>
 
         <?php } ?>

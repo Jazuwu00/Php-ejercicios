@@ -23,6 +23,9 @@ footer{
     padding-top: 10px;
    
 }
+.card a h3{
+    text-decoration: none;
+}
 
 .card .btn{
     width: 100px;

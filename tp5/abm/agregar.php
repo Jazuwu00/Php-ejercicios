@@ -12,6 +12,7 @@
     $marca= $_POST['marca'];
     $talle= $_POST['talle'];
     $precio= $_POST['precio'];
+    $promocion= $_POST['promocion'];
     // si se desea almacenar una imagen en la base de datos usar lo siguiente
     $imagen= addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
     $imagen2= addslashes(file_get_contents($_FILES['imagen2']['tmp_name']));
@@ -22,7 +23,7 @@
     //a) generar la consulta a realizar
 
 
-    $consulta= "INSERT INTO ropa (id,imagen,imagen2,ropa,marca,talle,precio) values ('','$imagen', '$imagen2', '$ropa','$marca','$talle','$precio')";
+    $consulta= "INSERT INTO ropa (id,imagen,imagen2,ropa,marca,talle,precio,promocion) values ('','$imagen', '$imagen2', '$ropa','$marca','$talle','$precio','$promocion')";
     
    
 
